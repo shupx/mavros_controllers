@@ -201,11 +201,17 @@ void trajectoryPublisher::pubrefSetpointRawGlobal() {
 
   msg.header.stamp = ros::Time::now();
   msg.header.frame_id = "map";
-
-  msg.coordinate_frame = 6;
+  msg.type_mask = 0;
+  msg.coordinate_frame = 5;
   msg.latitude = 47.397742;
   msg.longitude = 8.545594;
-  msg.altitude = 10.0;
+  msg.altitude = 500.0;
+  msg.velocity.x = v_targ(0);
+  msg.velocity.y = v_targ(1);
+  msg.velocity.z = v_targ(2);
+  msg.acceleration_or_force.x = a_targ(0);
+  msg.acceleration_or_force.y = a_targ(1);
+  msg.acceleration_or_force.z = a_targ(2);
   rawreferencePub_.publish(msg);
 }
 
